@@ -30,9 +30,19 @@ function write_to_files(){
     var url = "/write_to_files";
     var xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
-        // alert("loaded");
+        show_success_alert();
     }
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xhttp.send(JSON.stringify(request_body));
+}
+
+
+function show_success_alert(){
+    var btn = document.getElementById("submit_btn");
+    btn.innerHTML = "Fertig!";
+    setTimeout(function(){
+        var btn = document.getElementById("submit_btn");
+        btn.innerHTML = "Werte schreiben";
+    }, 2000);
 }

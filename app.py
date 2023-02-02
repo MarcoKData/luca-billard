@@ -1,4 +1,6 @@
 from project import app, render_template, jsonify, request
+import webbrowser
+import threading
 
 
 PATH_TO_TXT_FILES = "/Users/marcokleimaier/Documents/SoftwareentwicklungKleimaier/projekte/luca-billard/txt_files"
@@ -12,8 +14,6 @@ def index():
 def write():
     request_post = request.json
     for filename, content in request_post.items():
-        print(filename, content)
-        
         player_param = True
         if "_1" in filename:
             player_number = 1
@@ -33,5 +33,17 @@ def write():
     return jsonify({"status": "ok"})
 
 
+def start_app():
+    app.run(debug=False)
+
+
+def open_webbrowser():
+    webbrowser.open("http://127.0.0.1:5000")
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    x1 = threading.Thread(target=start_app)
+    x1.start()
+
+    x2 = threading.Thread(target=open_webbrowser)
+    x2.start()

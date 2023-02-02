@@ -4,9 +4,12 @@ html {
     padding-top: 20px;
 }
 
-body {
-    background-image: url("./../imgs/billard_bg.jpg");
-    background-size: 100%;
+.bg_img {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -2;
 }
 
 .white {
