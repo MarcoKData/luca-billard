@@ -6,10 +6,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billard Score System</title>
 
+    <link rel="stylesheet" href="static/css/index.css">
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/index.js"></script>
 </head>
 <body>
-    <h1>Hello World Meister ;)</h1>
+    <div class="bg_layer"></div>
+
+    <div class="col-sm">
+        <div class="row">
+            <div class="col-sm center form-group upper_col white">
+                Disziplin
+                <select onchange="write_to_files();" class="form-select dynamic_el" id="game_mode" aria-label="Default select example">
+                    <option value="8-Ball" selected>8-Ball</option>
+                    <option value="9-Ball">9-Ball</option>
+                    <option value="10-Ball">10-Ball</option>
+                    <option value="14/1 Endlos - Aufnahmen">14/1 Endlos - Aufnahmen</option>
+                    <option value="14/1 Endlos - Serie">14/1 Endlos - Serie</option>
+                    <option value="14/1 Endlos - Bälle">14/1 Endlos - Bälle</option>
+                    <option value="14/1 Endlos - Bälle auf Tisch">14/1 Endlos - Bälle auf Tisch</option>
+                </select>
+            </div>
+            <div class="col-sm center form-group upper_col white">
+                RACE TO
+                <input onchange="write_to_files();" class="form-control race_to_input dynamic_el" id="race_to" type="number" />
+            </div>
+        </div>
+
+        <div class="separator"></div>
+    </div>
+
+    <div class="row">
+        <!-- Player 1 -->
+        <div class="col-sm player_col">
+            <h2 class="white">Player 1</h2>
+
+            <div class="form-group row">
+                <div class="col-sm">
+                    <input class="form-control center player_name dynamic_el" id="name_1" />
+                </div>
+                <div class="col-sm">
+                    <input onchange="write_to_files();" class="form-control center player_single_game_wins dynamic_el" id="single_game_wins_1" type="number" value="0" />
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-sm form-group center white">
+                    Balls
+                    <input class="form-control center dynamic_el" id="balls_1" type="number" value="0" onchange="update_tpa(1);" />
+                </div>
+                <div class="col-sm center white">
+                    Errors
+                    <input class="form-control center dynamic_el" id="errors_1" type="number" value="0" onchange="update_tpa(1);" />
+                </div>
+                <div class="col-sm center white">
+                    TPA
+                    <input class="form-control center dynamic_el" id="tpa_1" value="0" readonly />
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-sm">
+                    <div class="row p1wl_row">
+                        <div class="col-sm white">
+                            P1 W-L
+                        </div>
+                        <div class="col-sm">
+                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_left_1" type="number" value="0" />
+                        </div>
+                        <div class="col-sm">
+                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_right_1" type="number" value="0" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm right white">
+                            ON FOUL
+                        </div>
+                        <div class="col-sm">
+                            <input onchange="write_to_files();" class="form-control dynamic_el" id="on_foul_1" type="number" value="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player 2 -->
+        <div class="col-sm player_col">
+            <h2 class="white">Player 2</h2>
+
+            <div class="form-group row">
+                <div class="col-sm">
+                    <input class="form-control center player_name dynamic_el" id="name_2" />
+                </div>
+                <div class="col-sm">
+                    <input onchange="write_to_files();" class="form-control center player_single_game_wins dynamic_el" id="single_game_wins_2" type="number" value="0" />
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-sm form-group center white">
+                    Balls
+                    <input class="form-control center dynamic_el" id="balls_2" type="number" value="0" onchange="update_tpa(2);" />
+                </div>
+                <div class="col-sm center white">
+                    Errors
+                    <input class="form-control center dynamic_el" id="errors_2" type="number" value="0" onchange="update_tpa(2);" />
+                </div>
+                <div class="col-sm center white">
+                    TPA
+                    <input class="form-control center dynamic_el" id="tpa_2" value="0" readonly />
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-sm">
+                    <div class="row p1wl_row">
+                        <div class="col-sm white">
+                            P1 W-L
+                        </div>
+                        <div class="col-sm">
+                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_left_2" type="number" value="0" />
+                        </div>
+                        <div class="col-sm">
+                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_right_2" type="number" value="0" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm right white">
+                            ON FOUL
+                        </div>
+                        <div class="col-sm">
+                            <input onchange="write_to_files();" class="form-control dynamic_el" id="on_foul_2" type="number" value="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submit_btn_wrapper">
+        <button class="btn btn-light submit_btn" onclick="write_to_files();">Namen aktualisieren</button>
+    </div>
 </body>
 </html>
