@@ -1,9 +1,10 @@
 from project import app, render_template, jsonify, request
 import webbrowser
 import threading
+import json
 
 
-PATH_TO_TXT_FILES = "/Users/marcokleimaier/Documents/SoftwareentwicklungKleimaier/projekte/luca-billard/txt_files"
+PATH_TO_TXT_FILES = "./txt_files"
 
 @app.route("/")
 def index():
@@ -42,8 +43,9 @@ def open_webbrowser():
 
 
 if __name__ == "__main__":
-    x1 = threading.Thread(target=start_app)
+    """x1 = threading.Thread(target=start_app)
     x1.start()
 
     x2 = threading.Thread(target=open_webbrowser)
-    x2.start()
+    x2.start()"""
+    app.run(debug=True)
