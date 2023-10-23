@@ -1,3 +1,6 @@
+var SHOW_141_ELEMENTS = false;
+
+
 function update_tpa(player_number){
     var balls_el = document.getElementById("balls_" + player_number.toString());
     var errors_el = document.getElementById("errors_" + player_number.toString());
@@ -45,4 +48,27 @@ function show_success_alert(){
         var btn = document.getElementById("submit_btn");
         btn.innerHTML = "Werte schreiben";
     }, 2000);
+}
+
+
+function check_for_input_toggle(){
+    var game_mode_el = document.getElementById("game_mode");
+    if (game_mode_el.value == "14/1 Endlos"){
+        SHOW_141_ELEMENTS = true;
+    } else {
+        SHOW_141_ELEMENTS = false;
+    }
+    
+    var elements_to_toggle = document.getElementsByClassName("141_element");
+    for (var i = 0; i < elements_to_toggle.length; i++){
+        toggle_element(elements_to_toggle[i]);
+    }
+}
+
+function toggle_element(element){
+    if (SHOW_141_ELEMENTS){
+        element.classList.remove("display_none");
+    } else {
+        element.classList.add("display_none");
+    }
 }

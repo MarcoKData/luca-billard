@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="static/css/index.css">
     <script src="static/js/index.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="bg_layer"></div>
@@ -20,19 +20,27 @@
         <div class="row">
             <div class="col-sm center form-group upper_col white">
                 Disziplin
-                <select onchange="write_to_files();" class="form-select dynamic_el" id="game_mode" aria-label="Default select example">
+                <select onchange="check_for_input_toggle(); write_to_files();" class="form-select dynamic_el" id="game_mode" aria-label="Default select example">
                     <option value="8-Ball" selected>8-Ball</option>
                     <option value="9-Ball">9-Ball</option>
                     <option value="10-Ball">10-Ball</option>
-                    <option value="14/1 Endlos - Aufnahmen">14/1 Endlos - Aufnahmen</option>
-                    <option value="14/1 Endlos - Serie">14/1 Endlos - Serie</option>
-                    <option value="14/1 Endlos - Bälle">14/1 Endlos - Bälle</option>
-                    <option value="14/1 Endlos - Bälle auf Tisch">14/1 Endlos - Bälle auf Tisch</option>
+                    <option value="14/1 Endlos">14/1 Endlos</option>
                 </select>
             </div>
             <div class="col-sm center form-group upper_col white">
                 RACE TO
-                <input onchange="write_to_files();" class="form-control race_to_input dynamic_el" id="race_to" type="number" />
+                <input onchange="write_to_files();" class="form-control race_to_input dynamic_el" id="race_to" type="number" value="0" />
+            </div>
+        </div>
+
+        <div class="row mt-5 141_element display_none">
+            <div class="col-sm white upper_col center">
+                Aufnahmen
+                <input onchange="write_to_files();" class="form-control race_to_input dynamic_el" id="innings" type="number" value="0" />
+            </div>
+            <div class="col-sm white upper_col center">
+                Bälle auf Tisch
+                <input onchange="write_to_files();" class="form-control race_to_input dynamic_el" id="balls_on_table" type="number" value="0" />
             </div>
         </div>
 
@@ -68,29 +76,18 @@
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <div class="col-sm">
-                    <div class="row p1wl_row">
-                        <div class="col-sm white">
-                            P1 W-L
-                        </div>
-                        <div class="col-sm">
-                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_left_1" type="number" value="0" />
-                        </div>
-                        <div class="col-sm">
-                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_right_1" type="number" value="0" />
-                        </div>
-                    </div>
+            <div class="row mt-5 white">
+                ON FOUL
+                <input onchange="write_to_files();" class="form-control dynamic_el" id="on_foul_1" type="number" value="0" />
+            </div>
+            <div class="row mt-5 141_element display_none">
+                <div class="col-sm white">
+                    Serie
+                    <input class="form-control center dynamic_el" id="series141_1" type="number" value="0" onchange="write_to_files();" />
                 </div>
-                <div class="col-sm">
-                    <div class="row">
-                        <div class="col-sm right white">
-                            ON FOUL
-                        </div>
-                        <div class="col-sm">
-                            <input onchange="write_to_files();" class="form-control dynamic_el" id="on_foul_1" type="number" value="0" />
-                        </div>
-                    </div>
+                <div class="col-sm white">
+                    Bälle
+                    <input class="form-control center dynamic_el" id="balls141_1" type="number" value="0" onchange="write_to_files();" />
                 </div>
             </div>
         </div>
@@ -123,29 +120,18 @@
                 </div>
             </div>
 
-            <div class="row mt-5">
-                <div class="col-sm">
-                    <div class="row p1wl_row">
-                        <div class="col-sm white">
-                            P1 W-L
-                        </div>
-                        <div class="col-sm">
-                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_left_2" type="number" value="0" />
-                        </div>
-                        <div class="col-sm">
-                            <input onchange="write_to_files();" class="form-control dynamic_el" id="p1wl_right_2" type="number" value="0" />
-                        </div>
-                    </div>
+            <div class="row mt-5 white">
+                ON FOUL
+                <input onchange="write_to_files();" class="form-control dynamic_el" id="on_foul_2" type="number" value="0" />
+            </div>
+            <div class="row mt-5 141_element display_none">
+                <div class="col-sm white">
+                    Serie
+                    <input class="form-control center dynamic_el" id="series141_2" type="number" value="0" onchange="write_to_files();" />
                 </div>
-                <div class="col-sm">
-                    <div class="row">
-                        <div class="col-sm right white">
-                            ON FOUL
-                        </div>
-                        <div class="col-sm">
-                            <input onchange="write_to_files();" class="form-control dynamic_el" id="on_foul_2" type="number" value="0" />
-                        </div>
-                    </div>
+                <div class="col-sm white">
+                    Bälle
+                    <input class="form-control center dynamic_el" id="balls141_2" type="number" value="0" onchange="write_to_files();" />
                 </div>
             </div>
         </div>

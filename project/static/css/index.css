@@ -4,6 +4,10 @@ html {
     padding-top: 20px;
 }
 
+.display_none {
+    display: none !important;
+}
+
 .bg_img {
     width: 100%;
     position: fixed;
